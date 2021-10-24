@@ -1,5 +1,6 @@
 from django.db.models import Model, CharField, SlugField, ForeignKey, CASCADE, ImageField, TextField, DecimalField, \
     BooleanField, DateTimeField
+from django.urls import reverse
 
 
 class Category(Model):
@@ -32,3 +33,6 @@ class Product(Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('shop:product_detail', args=[self.id, self.slug])
