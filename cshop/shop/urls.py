@@ -12,5 +12,3 @@ urlpatterns = [
     path('<int:pk>/<slug:slug>/', ProductDetail.as_view(), name='product_detail'),
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
