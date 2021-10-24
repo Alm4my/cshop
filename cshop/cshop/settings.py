@@ -129,3 +129,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # ___ SELF ADDED ___ #
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+# key used to store the cart in the user session
+# (since session are managed per visitor the same key can be used for all sessions)
+CART_SESSION_ID = 'cart'
+
