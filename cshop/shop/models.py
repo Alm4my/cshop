@@ -1,3 +1,34 @@
-from django.db import models
+from django.db.models import Model, CharField, SlugField, ForeignKey, CASCADE, ImageField, TextField, DecimalField, \
+    BooleanField, DateTimeField
 
-# Create your models here.
+
+class Category(Model):
+    name = CharField(max_length=255, db_index=True)
+    slug = SlugField(max_length=255, unique=True)
+
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'category'
+        verbose_name_plural = 'categories'
+
+    def __str__(self):
+        return self.name
+
+
+class Product(Model):
+    category = ForeignKey(Category, related_name='products', on_delete=CASCADE)
+    name = CharField(max_length=255, db_index=True)
+    slug = SlugField(max_length=255, db_index=True)
+    image = ImageField(upload_to='products/%Y/%m/%d', blank=True)
+    description = TextField(blank=True)
+    price = DecimalField(max_digits=10, decimal_places=2)
+    available = BooleanField(default=True)
+    created = DateTimeField(auto_now_add=True)
+    updated = DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ('name',)
+        index_together = (('id', 'slug'),)
+
+    def __str__(self):
+        return self.name
