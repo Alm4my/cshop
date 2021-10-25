@@ -32,4 +32,10 @@ class CartItemsList(ListView):
     context_object_name = 'cart'
 
     def get_queryset(self):
-        return Cart(self.request)
+        cart = Cart(self.request)
+        for item in cart:
+            item['update_quantity_form'] = CartAddProductForm(initial={
+                    'quantity': item['quantity'],
+                    'override': True
+                })
+        return cart
