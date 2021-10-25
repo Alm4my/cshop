@@ -1,0 +1,46 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}
+    Pay by credit card
+{% endblock %}
+
+{% block content %}
+    <h1>Pay by credit card</h1>
+    <form method="post" id="payment-form">
+        {% csrf_token %}
+
+        <label for="card-number">Card Number</label>
+        <div id="card-number" class="field"></div>
+
+        <label for="cvv">CVV</label>
+        <div id="cvv" class="field"></div>
+
+        <label for="expiration-date">Expiration Date</label>
+        <div class="field" id="expiration-date"></div>
+
+        <input type="hidden" id="nonce" name="payment_method_nonce" value="">
+        <input type="submit" value="Pay Now">
+    </form>
+    {#  includes the Braintree JS client SDK  #}
+    <script src="https://js.braintreegateway.com/js/braintree-2.32.1.min.js"></script>
+    <script>
+        {#let createClient = require('braintree-web/client').create()#}
+        {#createClient({#}
+        {#    authorization: {{ client_token }}#}
+        //{)
+        braintree.setup('{{ client_token }}', 'custom', {
+                id: 'payment-form',
+                hostedFields: {
+                    number: {
+                        selector: '#card-number'
+                    },
+                    cvv: {
+                        selector: '#cvv'
+                    },
+                    expirationDate: {
+                        selector: '#expiration-date'
+                    }
+                }
+        });
+    </script>
+{% endblock %}
