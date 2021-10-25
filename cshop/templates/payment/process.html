@@ -24,10 +24,6 @@
     {#  includes the Braintree JS client SDK  #}
     <script src="https://js.braintreegateway.com/js/braintree-2.32.1.min.js"></script>
     <script>
-        {#let createClient = require('braintree-web/client').create()#}
-        {#createClient({#}
-        {#    authorization: {{ client_token }}#}
-        //{)
         braintree.setup('{{ client_token }}', 'custom', {
                 id: 'payment-form',
                 hostedFields: {
