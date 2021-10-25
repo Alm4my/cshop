@@ -2,6 +2,8 @@ from django.shortcuts import render
 
 from django.views import View
 
+from .tasks import order_created
+
 from cart.cart import Cart
 from orders.forms import OrderCreateForm
 from orders.models import OrderItem
@@ -23,6 +25,8 @@ class OrderCreate(View):
                                          quantity=item['quantity'])
             # clear the cart
             cart.clear()
+            # launch asynchronous task
+            order_created.delay(order.id)
             return render(request, self.post_template_name, {'order': order})
         return self.get(request)
 
