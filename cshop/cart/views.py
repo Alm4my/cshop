@@ -7,7 +7,7 @@ from cart.forms import CartAddProductForm
 from shop.models import Product
 
 
-class CartAdd(View):
+class CartAddItem(View):
     def post(self, *args, **kwargs):
         cart = Cart(self.request)
         product = get_object_or_404(Product, id=kwargs.get('product_id'))
@@ -19,7 +19,7 @@ class CartAdd(View):
         return redirect('cart:cart_detail')
 
 
-class CartRemove(View):
+class CartRemoveItem(View):
     def post(self, *args, **kwargs):
         cart = Cart(self.request)
         product = get_object_or_404(Product, id=kwargs.get('product_id'))
@@ -27,11 +27,9 @@ class CartRemove(View):
         return redirect('cart:cart_detail')
 
 
-class CartDetail(ListView):
+class CartItemsList(ListView):
     template_name = 'cart/detail.html'
+    context_object_name = 'cart'
 
-    def get(self, request, *args, **kwargs):
-        cart = Cart(request)
-        return render(request, self.template_name, {'cart': cart})
-
-
+    def get_queryset(self):
+        return Cart(self.request)
