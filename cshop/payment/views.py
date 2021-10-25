@@ -7,6 +7,7 @@ from django.views.generic import TemplateView
 from cshop import settings
 
 from orders.models import Order
+from payment.tasks import payment_completed
 
 # instantiate Braintree payment gateway
 gateway = braintree.BraintreeGateway(settings.BRAINTREE_CONF)
@@ -38,6 +39,9 @@ class PaymentProcess(View):
             # store the unique transaction id
             order.braintree_id = result.transaction.id
             order.save()
+            # launch asynchronous task
+            payment_completed.delay(order.id)
+            # redirect to success page
             return redirect('payment:done')
         return redirect('payment:cancelled')
 
