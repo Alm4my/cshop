@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os.path
 from pathlib import Path
 
+import braintree
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -57,8 +60,7 @@ ROOT_URLCONF = 'cshop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -136,3 +138,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 # (since session are managed per visitor the same key can be used for all sessions)
 CART_SESSION_ID = 'cart'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# Braintree settings
+BRAINTREE_MERCHANT_ID = 'vjv2m3gx6hd9crcs'
+BRAINTREE_PUBLIC_KEY = 'sdm5vz5yyxj9zcch'
+BRAINTREE_PRIVATE_KEY = '0791b4f47aa099c890d4db816b80f9ff'
+
+BRAINTREE_CONF = braintree.Configuration(
+    braintree.Environment.Sandbox,
+    BRAINTREE_MERCHANT_ID,
+    BRAINTREE_PUBLIC_KEY,
+    BRAINTREE_PRIVATE_KEY
+)
