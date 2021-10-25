@@ -1,13 +1,16 @@
+from django.contrib.admin.views.decorators import staff_member_required
 from django.shortcuts import render, redirect
 from django.urls import reverse
+from django.utils.decorators import method_decorator
 
 from django.views import View
+from django.views.generic import DetailView
 
 from .tasks import order_created
 
 from cart.cart import Cart
 from orders.forms import OrderCreateForm
-from orders.models import OrderItem
+from orders.models import OrderItem, Order
 
 
 class OrderCreate(View):
@@ -36,3 +39,14 @@ class OrderCreate(View):
 
     def get(self, request):
         return render(request, self.get_template_name, {'form': OrderCreateForm()})
+
+
+@method_decorator(staff_member_required, name='dispatch')
+class AdminOrderDetail(DetailView):
+    model = Order
+    template_name = 'admin/orders/order/detail.html'
+
+# @staff_member_required
+# def admin_order_detail(request, order_id):
+#     order = get_object_or_404(Order, id=order_id)
+#     return render(request, 'admin/orders/order/detail.html', {'order': order})
