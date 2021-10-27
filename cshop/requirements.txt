@@ -4,3 +4,4 @@ celery~=5.1.2
 flower~=1.0.0
 braintree~=4.12.0
 weasyprint~=53.3
+django-rosetta~=0.9.7

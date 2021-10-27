@@ -17,10 +17,8 @@
                 {% if total_items > 0 %}
                    {% trans "Your cart" %}:
                     <a href="{% url 'cart:cart_detail' %}">
-                        {% blocktrans with total=cart.get_total_price count items=total_items%}
-                            {{ items }} item, {{ total }} FCFA
-                        {% plural %}
-                            {{ items }} items, {{ total }} FCFA
+                        {% blocktrans with total=cart.get_total_price count items=total_items %}
+                            {{ items }} item, ${{ total }}{% plural %}{{ items }} items, ${{ total }}
                         {% endblocktrans %}
                     </a>
                 {% else %}
