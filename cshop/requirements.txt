@@ -6,3 +6,4 @@ braintree~=4.12.0
 weasyprint~=53.3
 django-rosetta~=0.9.7
 django-parler~=2.2.1
+redis~=3.5
