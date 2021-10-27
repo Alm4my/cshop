@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-27 17:15+0000\n"
+"POT-Creation-Date: 2021-10-27 17:48+0000\n"
 "PO-Revision-Date: 2021-10-27 11:51+0000\n"
 "Last-Translator: admin@elcorvo.org\n"
 "Language-Team: \n"
@@ -35,6 +35,30 @@ msgstr "Anglais"
 msgid "French"
 msgstr "Francais"
 
+#: cshop/urls.py:24
+msgid "admin/"
+msgstr ""
+
+#: cshop/urls.py:25
+msgid "cart/"
+msgstr ""
+
+#: cshop/urls.py:26
+msgid "orders/"
+msgstr ""
+
+#: cshop/urls.py:27
+msgid "payment/"
+msgstr ""
+
+#: cshop/urls.py:28
+msgid "coupons/"
+msgstr ""
+
+#: cshop/urls.py:29
+msgid "rosetta/"
+msgstr ""
+
 #: orders/models.py:13
 msgid "first name"
 msgstr "Prenoms"
@@ -58,6 +82,22 @@ msgstr "cote postal"
 #: orders/models.py:18
 msgid "city"
 msgstr "ville"
+
+#: orders/urls.py:9
+msgid "create/"
+msgstr ""
+
+#: payment/urls.py:8
+msgid "process/"
+msgstr ""
+
+#: payment/urls.py:9
+msgid "done/"
+msgstr ""
+
+#: payment/urls.py:10
+msgid "cancelled/"
+msgstr ""
 
 #: templates/orders/order/create.html:5 templates/orders/order/create.html:9
 msgid "Checkout"
