@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-27 09:33+0000\n"
+"POT-Creation-Date: 2021-10-27 09:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,13 +18,45 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#: cart/forms.py:11
+msgid "Quantity"
+msgstr ""
+
+#: coupons/forms.py:6
+msgid "Coupon"
+msgstr ""
+
 #: cshop/settings.py:119
 msgid "English"
-msgstr ""
+msgstr "Anglais"
 
 #: cshop/settings.py:120
 msgid "French"
-msgstr ""
+msgstr "Francais"
+
+#: orders/models.py:13
+msgid "first name"
+msgstr "Prenoms"
+
+#: orders/models.py:14
+msgid "last name"
+msgstr "Nom"
+
+#: orders/models.py:15
+msgid "email"
+msgstr "addresse email"
+
+#: orders/models.py:16
+msgid "address"
+msgstr "addresse"
+
+#: orders/models.py:17
+msgid "postal code"
+msgstr "cote postal"
+
+#: orders/models.py:18
+msgid "city"
+msgstr "ville"
 
 #: venv/lib/python3.9/site-packages/django/contrib/messages/apps.py:7
 msgid "Messages"

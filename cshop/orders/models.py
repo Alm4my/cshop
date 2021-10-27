@@ -1,5 +1,6 @@
 from decimal import Decimal
 
+from django.utils.translation import gettext_lazy as _
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db.models import Model, CharField, EmailField, DateTimeField, BooleanField, ForeignKey, CASCADE, \
     DecimalField, PositiveIntegerField, SET_NULL, IntegerField
@@ -9,12 +10,12 @@ from shop.models import Product
 
 
 class Order(Model):
-    first_name = CharField(max_length=100)
-    last_name = CharField(max_length=100)
-    email = EmailField()
-    address = CharField(max_length=255)
-    postal_code = CharField(max_length=20, default='00225')
-    city = CharField(max_length=100, default='Abidjan')
+    first_name = CharField(_('first name'), max_length=100)
+    last_name = CharField(_('last name'), max_length=100)
+    email = EmailField(_('email'))
+    address = CharField(_('address'), max_length=255)
+    postal_code = CharField(_('postal code'), max_length=20, default='00225')
+    city = CharField(_('city'), max_length=100, default='Abidjan')
     created = DateTimeField(auto_now_add=True)
     updated = DateTimeField(auto_now=True)
     paid = BooleanField(default=False)
