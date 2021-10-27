@@ -1,6 +1,8 @@
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db.models import Model, CharField, EmailField, DateTimeField, BooleanField, ForeignKey, CASCADE, \
-    DecimalField, PositiveIntegerField
+    DecimalField, PositiveIntegerField, SET_NULL, IntegerField
 
+from coupons.models import Coupon
 from shop.models import Product
 
 
@@ -15,6 +17,11 @@ class Order(Model):
     updated = DateTimeField(auto_now=True)
     paid = BooleanField(default=False)
     braintree_id = CharField(max_length=150, blank=True)
+    discount = IntegerField(default=0, validators=[MinValueValidator(0),
+                                                   MaxValueValidator(100)])
+    coupon = ForeignKey(Coupon, related_name='orders', null=True, blank=True,
+                        on_delete=SET_NULL)
+
 
     class Meta:
         ordering = ['-created']
