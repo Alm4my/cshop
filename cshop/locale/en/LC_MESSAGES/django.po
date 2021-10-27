@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-27 09:51+0000\n"
+"POT-Creation-Date: 2021-10-27 11:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,6 +57,55 @@ msgstr "postal code"
 #: orders/models.py:18
 msgid "city"
 msgstr "city"
+
+#: templates/orders/order/create.html:5 templates/orders/order/create.html:9
+msgid "Checkout"
+msgstr ""
+
+#: templates/orders/order/create.html:12
+msgid "Your order"
+msgstr ""
+
+#: templates/orders/order/create.html:22
+#, python-format
+msgid ""
+"\n"
+"                        \"%(code)s\" (%(discount)s%% off)\n"
+"                    "
+msgstr ""
+
+#: templates/orders/order/create.html:29
+msgid "Total"
+msgstr ""
+
+#: templates/orders/order/create.html:35
+msgid "Place Order"
+msgstr ""
+
+#: templates/shop/base.html:18
+msgid "Your cart"
+msgstr ""
+
+#: templates/shop/base.html:20
+#, python-format
+msgid ""
+"\n"
+"                            %(items)s item, %(total)s FCFA\n"
+"                        "
+msgid_plural ""
+"\n"
+"                            %(items)s items, %(total)s FCFA\n"
+"                        "
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/shop/base.html:27
+msgid "Your cart is empty."
+msgstr ""
+
+#: templates/shop/product/detail.html:24
+msgid "Add to cart"
+msgstr ""
 
 #: venv/lib/python3.9/site-packages/django/contrib/messages/apps.py:7
 msgid "Messages"

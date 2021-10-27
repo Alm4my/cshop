@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,13 +15,16 @@
         <div class="cart">
             {% with cart|length as total_items %}
                 {% if total_items > 0 %}
-                    Your cart:
+                   {% trans "Your cart" %}:
                     <a href="{% url 'cart:cart_detail' %}">
-                        {{ total_items }} item{{ total_items | pluralize }},
-                        {{ cart.get_total_price }} FCFA
+                        {% blocktrans with total=cart.get_total_price count items=total_items%}
+                            {{ items }} item, {{ total }} FCFA
+                        {% plural %}
+                            {{ items }} items, {{ total }} FCFA
+                        {% endblocktrans %}
                     </a>
                 {% else %}
-                    Your cart is empty.
+                    {% trans "Your cart is empty." %}
                 {% endif %}
             {% endwith %}
         </div>
