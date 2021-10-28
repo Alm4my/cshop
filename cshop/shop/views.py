@@ -3,6 +3,7 @@ from django.views.generic import ListView, DetailView
 
 from cart.forms import CartAddProductForm
 from shop.models import Category, Product
+from shop.recommender import Recommender
 
 
 class ProductList(ListView):
@@ -30,8 +31,9 @@ class ProductDetail(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        r = Recommender()
+        context['recommended_products'] = r.suggest_products_for([self.object], 4)
+        # self.object represent the object we are viewing its details i.e. a Product
         context['cart_product_form'] = CartAddProductForm()
         context['category_list'] = Category.objects.all()
         return context
-
-
