@@ -6,6 +6,7 @@ from cart.cart import Cart
 from cart.forms import CartAddProductForm
 from coupons.forms import CouponApplyForm
 from shop.models import Product
+from shop.recommender import Recommender
 
 
 class CartAddItem(View):
@@ -35,6 +36,10 @@ class CartItemsList(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['coupon_apply_form'] = CouponApplyForm()
+        r = Recommender()
+        cart_products = [item['product'] for item in self.object_list]
+        context['recommended_products'] = r.suggest_products_for(cart_products,
+                                                                 max_results=4)
         return context
 
     def get_queryset(self):
